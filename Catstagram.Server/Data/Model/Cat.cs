@@ -4,7 +4,7 @@
 namespace Catstagram.Server.Data.Model
 {
     using System.ComponentModel.DataAnnotations;
-    using static Validation.Cat
+    using static Validation.Cat;
     public class Cat
     {
         public int Id { get; set; }

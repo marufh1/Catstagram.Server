@@ -63,24 +63,37 @@ namespace Catstagram.Server.Controllers
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(this._appSettings.Secret);
-            var tokenDescriptor = new SecurityTokenDescriptor
+
+            try
             {
-                Subject = new ClaimsIdentity(new Claim[]
+                model.Id = user.Id;
+                var tokenDescriptor = new SecurityTokenDescriptor
                 {
-                    new Claim(ClaimTypes.Name, model.UserName.ToString())
+                    Subject = new ClaimsIdentity(new[]
+               {
+                    new Claim(ClaimTypes.NameIdentifier, model.Id),
+                    new Claim(ClaimTypes.Name, model.Id)
                 }),
-                Expires = DateTime.UtcNow.AddDays(7),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-            };
+                    Expires = DateTime.UtcNow.AddDays(7),
+                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+                };
 
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            var encryptedToken = tokenHandler.WriteToken(token);
+                var token = tokenHandler.CreateToken(tokenDescriptor);
+                var encryptedToken = tokenHandler.WriteToken(token);
 
-            //return new
-            //{
-            //    Token = encryptedToken
-            //};
-            return Ok(JsonSerializer.Serialize(encryptedToken));
+                //return new
+                //{
+                //    Token = encryptedToken
+                //};
+                return Ok(JsonSerializer.Serialize(encryptedToken));
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+
+           
         }
 
     }

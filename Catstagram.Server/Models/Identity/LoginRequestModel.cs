@@ -9,6 +9,7 @@ namespace Catstagram.Server.Models.Identity
     using System.Threading.Tasks;
     public class LoginRequestModel
     {
+        public string Id { get; set; }
         [Required]
         public string UserName { get; set; }
         [Required]
