@@ -1,6 +1,6 @@
 ﻿
 
-namespace Catstagram.Server.Models.Identity
+namespace Catstagram.Server.Features.Identity
 {
     using System;
     using System.Collections.Generic;
