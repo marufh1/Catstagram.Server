@@ -8,5 +8,6 @@ namespace Catstagram.Server.Features.Cats
     public interface ICatService
     {
         public Task<int> Create(string imgUrl, string description, string userId);
+        public Task<IEnumerable<CatListingResponseModel>> ByUser(string userId);
     }
 }
