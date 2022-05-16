@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Catstagram.Server.Features.Cats
+namespace Catstagram.Server.Features.Cats.Models
 {
-    public class CatListingResponseModel
+    public class CatListingServiceModel
     {
         public int Id { get; set; }
         public string Description { get; set; }

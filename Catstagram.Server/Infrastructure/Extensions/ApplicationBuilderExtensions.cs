@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Catstagram.Server.Infrastructure
+namespace Catstagram.Server.Infrastructure.Extensions
 {
     public static class ApplicationBuilderExtensions
     {
@@ -17,7 +17,7 @@ namespace Catstagram.Server.Infrastructure
                   .UseSwagger() // enable middleware to serve generated swagger as a json endpoint
                   .UseSwaggerUI(options =>
                   {
-                      options.SwaggerEndpoint("/swagger/v1/swagger.json", "My API");
+                      options.SwaggerEndpoint("/swagger/v1/swagger.json", "My Catstagram API");
                       options.RoutePrefix = string.Empty;
                   }); // specify the swagger json endpoint 
         }

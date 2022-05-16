@@ -1,10 +1,11 @@
 ﻿
-namespace Catstagram.Server.Infrastructure
+namespace Catstagram.Server.Infrastructure.Extensions
 {
     using Catstagram.Server.Data;
     using Catstagram.Server.Data.Model;
     using Catstagram.Server.Features.Cats;
     using Catstagram.Server.Features.Identity;
+    using Catstagram.Server.Infrastructure.Filters;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
@@ -90,5 +91,10 @@ namespace Catstagram.Server.Infrastructure
                         Title = "My Cats API" 
                     });
             });
+
+        public static void AddApiControllers(this IServiceCollection services)
+            => services.AddControllers(options => options
+                            .Filters
+                            .Add<ModelOrNotFoundActionFilter>());
     }
 }

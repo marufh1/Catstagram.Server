@@ -9,7 +9,8 @@ namespace Catstagram.Server
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
-    using Catstagram.Server.Infrastructure;
+    using Catstagram.Server.Infrastructure.Extensions;
+    using Catstagram.Server.Infrastructure.Filters;
 
     public class Startup
     {
@@ -26,7 +27,7 @@ namespace Catstagram.Server
                 .AddJwtAuthentication(services.GetApplicationSettings(this.Configuration))
                 .AddApplicationServices()
                 .AddSwagger()
-                .AddControllers();
+                .AddApiControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
